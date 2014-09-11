@@ -1,0 +1,6 @@
+.flex-control-paging{
+    display:none;
+}
+.flex-prev{
+    background-image:url('../previousbutton.jpg');
+}
