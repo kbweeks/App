@@ -1,6 +1,84 @@
-.flex-control-paging{
-    display:none;
+/**** menu ****/
+.icon-bar > *:hover{
+    background:#999999;
 }
-.flex-prev{
-    background-image:url('../previousbutton.jpg');
+
+
+body{
+    background-color:white;
 }
+.columns{
+    padding:0px;
+}
+
+/*** home page ***/
+.image{
+    text-align:center;
+    margin:10px 15px 15px 10px;
+}
+
+/***** separate event page *****/
+.margin-15{
+    margin-left:20px;
+    margin-right:50px;
+    text-align:center;
+}
+h1{
+    font-family:"District";
+    font-size:26pt;
+    color:#333333;
+    text-align:left;
+}
+h2{
+    font-family:"District";
+    font-size:18pt;
+    color:#333333;
+    text-align:left;
+}
+
+p{
+    font-family:"District";
+    color:#333333;
+    font-size:11pt;
+}
+.button-bar{
+    text-align:center;
+}
+.button{
+    background-color:#999999;
+    font-size:30pt;
+    margin:5px 5px;
+    height:90px;
+    width:100px;
+}
+.button:hover{
+    background-color:#333333;
+}
+table tr td{
+    font-family:"District";
+    font-size:12pt;
+    margin-left:15px;
+    color:#333333;
+}
+
+
+/***** interests ****/
+.checkbox{
+    font-family:"District";
+    font-size:16pt;
+    color:#333333;
+    text-align:left;
+}
+.add a{
+    font-size:18pt;
+    color:#333333;
+}
+
+
+/*** events ****/
+.small-image{
+    height:90px;
+    width:180px;
+}
+
+
