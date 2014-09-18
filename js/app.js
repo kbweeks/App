@@ -1,9 +1,11 @@
+
+
 function capturePhoto() {
     navigator.camera.getPicture(uploadPhoto,null,{sourceType:1,quality:60,});
 }
 
 
-function uploadPhoto(data) {
+function uploadPhoto(data){
    
    cameraPic.src = data;
         navigator.notification.alert(
