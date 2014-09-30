@@ -24,6 +24,7 @@ function generateMap(position){
         map: map,
         title: 'Current Location'
     });
+    
 }
 
 /* For Browser testing. Comment out for app 
