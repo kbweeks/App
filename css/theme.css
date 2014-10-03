@@ -8,8 +8,9 @@
     position:fixed;
     bottom:0px;
     width:100%;
-    margin-bottom:40px;
-    z-index:0;
+    z-index:1;
+    margin-bottom:0px;
+    height:85px;
 }
 
 body{
@@ -35,12 +36,15 @@ body{
     padding-right: 5px;
     padding-top:5px;
     border-style:solid;
-    border-width:1px;
+    border-width:2px;
     border-radius:5px;
-    box-shadow: 2px 2px #999999;
+    box-shadow: 3px 4px 4px #999999;
     z-index:1;
 }
 a:hover {
+    color:black;
+}
+a {
     color:black;
 }
 .fi-torso {
@@ -56,6 +60,7 @@ a:hover {
     text-align:center;
     height:35px;
     border-radius:3px;
+    width:auto;
 }
 /***** separate event page *****/
 .margin-15{
@@ -86,6 +91,7 @@ p{
     font-family:"Archivo Narrow";
     color:#333333;
     font-size:13pt;
+    text-align:left;
 }
 .button-bar{
     text-align:center;
