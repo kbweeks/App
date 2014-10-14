@@ -62,6 +62,9 @@ a {
     border-radius:3px;
     width:auto;
 }
+.scroll {
+    padding:60px;
+}
 /***** separate event page *****/
 .margin-15{
     margin-left:10px;
