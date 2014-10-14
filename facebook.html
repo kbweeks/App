@@ -24,23 +24,30 @@
 <div class="row">
    <div class="small-12 columns"> 
     <h1>
-        Manage Friends
+        Link to Facebook
     </h1>
    </div>  
 </div>
-<table>
-            
-            <tr>
-                <td><a href="facebook.html">Link Facebook <i class="fi-arrow-right"></i></a></td>
-            </tr>
-            <tr>
-                <td><a href="#">Link to Contacts <i class="fi-arrow-right"></i></a></td>
-            </tr>
-            <tr>
-                <td><a href="#">Link to Instagram <i class="fi-arrow-right"></i></a></td>
-            </tr>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '562809377198818',
+      xfbml      : true,
+      version    : 'v2.1'
+    });
+  };
 
-        </table>
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
 </div>
 
 <nav class="top-bar bottom-bar">           
