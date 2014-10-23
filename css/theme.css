@@ -1,5 +1,7 @@
 
-
+.container {
+    margin:20px;
+}
 /**** menu ****/
 .icon-bar > *:hover{
     background:#999999;
@@ -52,11 +54,13 @@ a {
     color:black;
     font-family: "Archivo Narrow";
     font-style: normal;
+    margin-bottom:2px;
 }
 .friend-box{
     border-width:1px;
     border-style:solid;
     padding:1px 1px;
+    padding-bottom:2px;
     text-align:center;
     height:35px;
     border-radius:3px;
@@ -64,6 +68,12 @@ a {
 }
 .scroll {
     padding:60px;
+}
+#event {
+    font-family:"Archivo Narrow";
+    color:#333333;
+    font-size:13pt;
+    text-align:left;
 }
 /***** separate event page *****/
 .margin-15{
@@ -135,6 +145,14 @@ td {
    margin-right:20px;
    margin-left:-10px;
 }
+/******add page*****/
+.input {
+    font-family:"Archivo Narrow";
+    font-size:16pt;
+    font-color:white;
+}
+
+
 
 /***** interests ****/
 .checkbox{
