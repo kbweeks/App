@@ -27,21 +27,24 @@ body{
     text-align:center;
     margin:10px 15px 15px 10px;
 }
+ul {
+    margin-left:0rem;
+    font-size:18pt;
+}
 .box {
-    position: relative;
-    height:290px;
-    width:290px;
-    margin-top:10px;
-    margin-left:auto;
-    margin-right:auto;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top:5px;
-    border-style:solid;
-    border-width:2px;
-    border-radius:5px;
-    box-shadow: 3px 4px 4px #999999;
+   
+    height:200px;
+    width:100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top:30px;
+    border:2px solid;
+    border-right:1px;
+    border-left:1px;
+    border-top:1px;
     z-index:1;
+}
+.content {
 }
 a:hover {
     color:black;
@@ -57,17 +60,20 @@ a {
     margin-bottom:2px;
 }
 .friend-box{
-    border-width:1px;
+    border-width:2px;
     border-style:solid;
     padding:1px 1px;
     padding-bottom:2px;
     text-align:center;
-    height:35px;
-    border-radius:3px;
+    height:60px;
+    width:50px;
+    border-radius:50%;
     width:auto;
+    line-height:60px;
+    background-color:white;
 }
 .scroll {
-    padding:400px;
+    padding-bottom:200px;
 }
 #event {
     font-family:"Archivo Narrow";
@@ -98,6 +104,12 @@ h3{
     font-size:16pt;
     color:#333333;
     text-align:left;
+}
+h4{
+    font-family:"Archivo Narrow";
+    font-size:16pt;
+    color:#333333;
+    text-align:center;
 }
 
 p{
@@ -142,16 +154,34 @@ td {
     width:80%;
 }
 .button-margin {
-   margin-right:20px;
-   margin-left:-10px;
+   margin-right:auto;
+   margin-left:auto;
 }
 /******add page*****/
-.input {
+input {
     font-family:"Archivo Narrow";
-    font-size:16pt;
-    font-color:white;
+    font-size:14pt;
+    background-color: #333333;
+    color:white;
+    border:none;
+    padding:10px;
+    
 }
-
+label {
+    font-size:1rem;
+}
+button, .button {
+    font-size:2em;
+    padding:4px 20px;
+    margin:0px;
+    background-color: #999999;
+}
+button:hover {
+    background-color: #333333;
+}
+#camera-button {
+    margin-bottom:-135px;
+}
 
 
 /***** interests ****/
@@ -196,4 +226,9 @@ td {
     font-size:12pt;
     margin:10px 0px 0px 10px;
     color:white;
+}
+#status {
+    font-family:"Archivo Narrow";
+    font-size:16pt;
+    color:#333333;
 }

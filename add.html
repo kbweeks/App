@@ -1,6 +1,9 @@
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
+    <meta
+  name="viewport"
+  content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Foundation | Welcome</title>
@@ -64,8 +67,20 @@
 			<label for="email">Cost</label>
 			<input type="text" name="cost" id="cost" required>
 			</p>
-
-			
+                        
+                        <p>
+			<label for="email">Description</label>
+			<input type="text" name="description" id="description" required>
+			</p>
+                      
+              
+                        <div id="camera-button">
+                        <button class="camera-control" onclick="capturePhoto();"><i class="fi-camera"></i></button>
+                        <div style="text-align:center;margin:20px;">
+                        <img id="cameraPic" src="" style="width:auto;height:120px;"></img>
+                        </div>
+                        </div>
+  
 			<p>
 			<input type="submit" value="Create Event">
 			</p>
