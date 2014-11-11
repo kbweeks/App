@@ -29,11 +29,11 @@ body{
 }
 ul {
     margin-left:0rem;
-    font-size:18pt;
+    font-size:13pt;
 }
 .box {
    
-    height:200px;
+    height:170px;
     width:100%;
     padding-left: 15px;
     padding-right: 15px;
@@ -53,22 +53,21 @@ a {
     color:black;
 }
 .fi-torso {
-    font-size:20pt;
+    font-size:16pt;
     color:black;
     font-family: "Archivo Narrow";
     font-style: normal;
     margin-bottom:2px;
+    padding-left:4px;
 }
 .friend-box{
     border-width:2px;
     border-style:solid;
-    padding:1px 1px;
     padding-bottom:2px;
-    text-align:center;
+    text-align:left;
     height:60px;
-    width:50px;
+    width:60px;
     border-radius:50%;
-    width:auto;
     line-height:60px;
     background-color:white;
 }
