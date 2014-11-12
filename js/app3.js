@@ -1,9 +1,14 @@
 
-Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
 
 var events = Parse.Object.extend("eventInfo");
 
 function savePhoto(){
+    var parseAPPID = "x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA";
+    var parseJSID = "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8";
+        
+    Parse.initialize(parseAPPID, parseJSID);
+    
+    
     var base64 = "V29ya2luZyBhdCBQYXJzZSBpcyBncmVhdCE=";
     var file = new Parse.File("mypic.png", { base64: base64 });
         file.save({
