@@ -1,9 +1,9 @@
 
 //Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
 var htmlBuilder = "";
-var photoName;
+var photoName = null;
 $(document).ready(function() {
-        alert("working");
+      
         
         var parseAPPID = "x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA";
         var parseJSID = "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8";
@@ -42,7 +42,7 @@ $(document).ready(function() {
                     success:function() {
                         console.log("Success");
                         alert("You've created an event!");
-                        
+                        console.log(photoName);
                         var base64 = "V29ya2luZyBhdCBQYXJzZSBpcyBncmVhdCE=";
                         var file = new Parse.File(photoName, { base64: base64 });
                             file.save({
@@ -94,6 +94,7 @@ function capturePhoto() {
 
 function uploadPhoto(data){
     //send file to server
+    console.log(data);
    photoName = data;
    cameraPic.src = data;
         navigator.notification.alert(
