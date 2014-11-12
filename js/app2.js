@@ -2,7 +2,7 @@
 //Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
 var htmlBuilder = "";
 var photoName = null;
-$(document).ready(function() {
+function savePhoto() {
       
         
         var parseAPPID = "x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA";
@@ -60,7 +60,7 @@ $(document).ready(function() {
 	
     });
 
-});
+};
 
 
 
