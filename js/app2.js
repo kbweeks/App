@@ -1,28 +1,15 @@
 
 //Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
 var htmlBuilder = "";
-var photoName = null;
-
- var parseAPPID = "x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA";
+$(document).ready(function() {
+        
+        var parseAPPID = "x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA";
         var parseJSID = "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8";
         
         Parse.initialize(parseAPPID, parseJSID);
         var CommentObject = Parse.Object.extend("CommentObject");
         
-        
         getList(CommentObject);
-
-
-
-$(document).ready(function() {
-    getList(CommentObject)
-});
-
-
-function savePhoto() {
-      
-        
-       
         
 	$("#commentForm").on("submit", function(e) {
 		e.preventDefault();
@@ -30,8 +17,7 @@ function savePhoto() {
 		console.log("Handling the submit");
 		//add error handling here
 		//gather the form data
-                    var base64 = "V29ya2luZyBhdCBQYXJzZSBpcyBncmVhdCE=";
-                    
+
 		var data = {};
 		data.name = $("#name").val();
 		data.venue = $("#venue").val();
@@ -40,28 +26,13 @@ function savePhoto() {
                 data.day = $("#day").val();
 		data.time = $("#time").val();
 		data.cost = $("#cost").val();
-                data.descrip = $("#descrip").val();
-                //data.photo=$("#photo").val();
-                //data.file=new Parse.File("mypic.png", { base64: base64 });
-                
-                
-                 
+                data.photo=$("#photo").val();
                 
                 var comment = new CommentObject();
                 comment.save(data,{
                     success:function() {
                         console.log("Success");
-                        alert("You've created an event!");
-                        console.log(photoName);
-                        var base64 = "V29ya2luZyBhdCBQYXJzZSBpcyBncmVhdCE=";
-                        var file = new Parse.File(photoName, { base64: base64 });
-                            file.save({
-                            success: function(file) {
-                            alert('File saved, now saving product with file reference...');
-                }
-            });
-                        
-                        
+                        alert("You've created an event, now invite your friends!");
                     },
                     error:function(e) {
                         console.dir(e);
@@ -70,7 +41,7 @@ function savePhoto() {
 	
     });
 
-};
+});
 
 
 
@@ -104,11 +75,10 @@ function capturePhoto() {
 
 function uploadPhoto(data){
     //send file to server
-    console.log(data);
-   photoName = data;
+   
    cameraPic.src = data;
         navigator.notification.alert(
-                'Your photo has been saved for now', //message
+                'Your photo has been uploaded', //message
                 okay,                           //callback
             'Photo uploaded',               //title
             'OK'                            //buttonName
