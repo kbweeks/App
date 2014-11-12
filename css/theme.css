@@ -6,9 +6,6 @@
 .icon-bar > *:hover{
     background:#999999;
 }
-.top-bar {
-    position:fixed;
-}
 .bottom-bar{
     position:fixed;
     bottom:0px;
