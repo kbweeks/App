@@ -2,10 +2,8 @@
 //Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
 var htmlBuilder = "";
 var photoName = null;
-function savePhoto() {
-      
-        
-        var parseAPPID = "x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA";
+
+ var parseAPPID = "x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA";
         var parseJSID = "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8";
         
         Parse.initialize(parseAPPID, parseJSID);
@@ -13,6 +11,18 @@ function savePhoto() {
         
         
         getList(CommentObject);
+
+
+
+$(document).ready(function() {
+    getList(CommentObject)
+});
+
+
+function savePhoto() {
+      
+        
+       
         
 	$("#commentForm").on("submit", function(e) {
 		e.preventDefault();
