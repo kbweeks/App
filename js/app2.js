@@ -1,15 +1,43 @@
 
 //Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
 var htmlBuilder = "";
-$(document).ready(function() {
+
+function submitEvent() {
         
         var parseAPPID = "x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA";
         var parseJSID = "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8";
         
         Parse.initialize(parseAPPID, parseJSID);
-        var CommentObject = Parse.Object.extend("CommentObject");
         
-        getList(CommentObject);
+        var NewEvent = Parse.Object.extend("NewEvent");
+        
+        var commentForm = $("commentForm").val();
+        
+        if (imagedata !="") {
+            var parseFile = new Parse.File("pic.jpg", {base64:imagedata});
+            console.log(parseFile);
+            
+            parseFile.save.then(function() {
+                var data = new NewEvent();
+                data.set("name",name);
+                data.set("venue",venue);
+                data.set("town",town);
+                data.set("state",state);
+                data.set("day",day);
+                data.set("time",time);
+                data.set("cost",cost);
+                data.set("photo",parseFile);
+                data.save(null, {
+                    success:function(ob) {
+                        window.location.href="index.html";
+                    }, error:function(e) {
+                        console.log("didnt work");
+                    }
+                });
+            });
+                                
+      
+        /*getList(CommentObject);
         
 	$("#commentForm").on("submit", function(e) {
 		e.preventDefault();
@@ -39,9 +67,9 @@ $(document).ready(function() {
                     }
                 });
 	
-    });
+    });*/
 
-});
+}; 
 
 
 
