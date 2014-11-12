@@ -2,6 +2,7 @@
 //Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
 var htmlBuilder = "";
 $(document).ready(function() {
+        alert("working");
         
         var parseAPPID = "x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA";
         var parseJSID = "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8";
@@ -9,15 +10,24 @@ $(document).ready(function() {
         Parse.initialize(parseAPPID, parseJSID);
         var CommentObject = Parse.Object.extend("CommentObject");
         
+        var base64 = "V29ya2luZyBhdCBQYXJzZSBpcyBncmVhdCE=";
+        var file = new Parse.File("mypic.png", { base64: base64 });
+            file.save({
+                success: function(file) {
+                alert('File saved, now saving product with file reference...');
+                }
+            });
+             
         getList(CommentObject);
         
-	$("#commentForm").on("submit", function(e) {
+	$("#commentForm").on("click", function(e) {
 		e.preventDefault();
 
 		console.log("Handling the submit");
 		//add error handling here
 		//gather the form data
-
+                    var base64 = "V29ya2luZyBhdCBQYXJzZSBpcyBncmVhdCE=";
+                    
 		var data = {};
 		data.name = $("#name").val();
 		data.venue = $("#venue").val();
@@ -26,13 +36,18 @@ $(document).ready(function() {
                 data.day = $("#day").val();
 		data.time = $("#time").val();
 		data.cost = $("#cost").val();
-                data.photo=$("#photo").val();
+                data.descrip = $("#descrip").val();
+                //data.photo=$("#photo").val();
+                data.file=new Parse.File("mypic.png", { base64: base64 });
+                
+                
+                 
                 
                 var comment = new CommentObject();
                 comment.save(data,{
                     success:function() {
                         console.log("Success");
-                        alert("You've created an event, now invite your friends!");
+                        alert("You've created an event!");
                     },
                     error:function(e) {
                         console.dir(e);
