@@ -3,10 +3,11 @@ Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujj
 
 var events = Parse.Object.extend("eventInfo");
 
-var base64 = "V29ya2luZyBhdCBQYXJzZSBpcyBncmVhdCE=";
-var file = new Parse.File("mypic.png", { base64: base64 });
-file.save({
-    success: function(file) {
+function savePhoto(){
+    var base64 = "V29ya2luZyBhdCBQYXJzZSBpcyBncmVhdCE=";
+    var file = new Parse.File("mypic.png", { base64: base64 });
+        file.save({
+        success: function(file) {
         alert('File saved, now saving product with file reference...');
 
         var data = new eventInfo();
@@ -39,7 +40,7 @@ file.save({
         alert('Failed to save file: ' + error.description);
     }
 });
-
+}
 function capturePhoto() {
     navigator.camera.getPicture(uploadPhoto,null,{sourceType:2,quality:60,});
 }
