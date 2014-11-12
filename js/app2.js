@@ -1,6 +1,7 @@
 
 //Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
 var htmlBuilder = "";
+var photoName;
 $(document).ready(function() {
         alert("working");
         
@@ -10,17 +11,10 @@ $(document).ready(function() {
         Parse.initialize(parseAPPID, parseJSID);
         var CommentObject = Parse.Object.extend("CommentObject");
         
-        var base64 = "V29ya2luZyBhdCBQYXJzZSBpcyBncmVhdCE=";
-        var file = new Parse.File("mypic.png", { base64: base64 });
-            file.save({
-                success: function(file) {
-                alert('File saved, now saving product with file reference...');
-                }
-            });
-             
+        
         getList(CommentObject);
         
-	$("#commentForm").on("click", function(e) {
+	$("#commentForm").on("submit", function(e) {
 		e.preventDefault();
 
 		console.log("Handling the submit");
@@ -38,7 +32,7 @@ $(document).ready(function() {
 		data.cost = $("#cost").val();
                 data.descrip = $("#descrip").val();
                 //data.photo=$("#photo").val();
-                data.file=new Parse.File("mypic.png", { base64: base64 });
+                //data.file=new Parse.File("mypic.png", { base64: base64 });
                 
                 
                  
@@ -48,6 +42,16 @@ $(document).ready(function() {
                     success:function() {
                         console.log("Success");
                         alert("You've created an event!");
+                        
+                        var base64 = "V29ya2luZyBhdCBQYXJzZSBpcyBncmVhdCE=";
+                        var file = new Parse.File(photoName, { base64: base64 });
+                            file.save({
+                            success: function(file) {
+                            alert('File saved, now saving product with file reference...');
+                }
+            });
+                        
+                        
                     },
                     error:function(e) {
                         console.dir(e);
@@ -90,10 +94,10 @@ function capturePhoto() {
 
 function uploadPhoto(data){
     //send file to server
-   
+   photoName = data;
    cameraPic.src = data;
         navigator.notification.alert(
-                'Your photo has been uploaded', //message
+                'Your photo has been saved for now', //message
                 okay,                           //callback
             'Photo uploaded',               //title
             'OK'                            //buttonName
