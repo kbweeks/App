@@ -2,7 +2,12 @@
 //Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
 var htmlBuilder = "";
 
-$(document).ready(function() {
+// Wait for PhoneGap to load
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// PhoneGap is ready
+function onDeviceReady() {
+	console.log("onDeviceReady()");
     
         var parseAPPID = "x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA";
         var parseJSID = "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8";
@@ -30,7 +35,7 @@ $(document).ready(function() {
        
         
       getList(CommentObject);
-});
+};
   
 
 function saveEvent(){
