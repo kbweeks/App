@@ -8,10 +8,21 @@ $(document).ready(function() {
         
         Parse.initialize(parseAPPID, parseJSID);
        
-       var CommentObject = Parse.Object.extend("CommentObject"); 
+       var CommentObject = Parse.Object.extend("CommentObject");
+       
+       $("#save-event").click(function() {
+            console.log("btn clicked");
+            saveEvent();
+            return false;
+        });
+       
+       
         
       getList(CommentObject);
 });
+
+
+
 
 function getList(CommentObject){
     console.log("getList" + CommentObject);
@@ -59,6 +70,7 @@ function saveEvent(){
                 var eventDay = $("#day").val();
                 var eventTime = $("#time").val();
                 var eventCost = $("#cost").val();
+                var eventDesc = $("#description").val();
     
     if(imagedata !=""){
         var parseFile = new Parse.File("pic.jpg", {base64:imagedata});
@@ -71,6 +83,7 @@ function saveEvent(){
                 CommentObject.set = ("day", eventDay);
 		CommentObject.set = ("time", eventTime);
 		CommentObject.set = ("cost", eventCost);
+                CommentObject.set = ("description", eventDesc);
                 CommentObject.set = ("file", parseFile);
                 
                 var comment = new CommentObject();
