@@ -1,43 +1,15 @@
 
 //Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
 var htmlBuilder = "";
-
-function submitEvent() {
+$(document).ready(function() {
         
         var parseAPPID = "x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA";
         var parseJSID = "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8";
         
         Parse.initialize(parseAPPID, parseJSID);
+        var CommentObject = Parse.Object.extend("CommentObject");
         
-        var NewEvent = Parse.Object.extend("NewEvent");
-        
-        var commentForm = $("commentForm").val();
-        
-        if (imagedata !="") {
-            var parseFile = new Parse.File("pic.jpg", {base64:imagedata});
-            console.log(parseFile);
-            
-            parseFile.save.then(function() {
-                var data = new NewEvent();
-                data.set("name",name);
-                data.set("venue",venue);
-                data.set("town",town);
-                data.set("state",state);
-                data.set("day",day);
-                data.set("time",time);
-                data.set("cost",cost);
-                data.set("photo",parseFile);
-                data.save(null, {
-                    success:function(ob) {
-                        window.location.href="index.html";
-                    }, error:function(e) {
-                        console.log("didnt work");
-                    }
-                });
-            });
-                                
-      
-        /*getList(CommentObject);
+        getList(CommentObject);
         
 	$("#commentForm").on("submit", function(e) {
 		e.preventDefault();
@@ -45,33 +17,47 @@ function submitEvent() {
 		console.log("Handling the submit");
 		//add error handling here
 		//gather the form data
-
-		var data = {};
-		data.name = $("#name").val();
-		data.venue = $("#venue").val();
-		data.town = $("#town").val();
-		data.state = $("#state").val();
-                data.day = $("#day").val();
-		data.time = $("#time").val();
-		data.cost = $("#cost").val();
-                data.photo=$("#photo").val();
+                
+                var eventName = $("#name").val();
+                var eventVenue = $("#venue").val();
+                var eventTown = $("#town").val();
+                var eventState = $("#state").val();
+                var eventDay = $("#day").val();
+                var eventTime = $("#time").val();
+                var eventCost = $("#cost").val();
+    
+    if(imagedata !=""){
+        var parseFile = new Parse.File("pic.jpg", {base64:imagedata});
+            parseFile.save().then(function() {
+                console.log("getting data");
+                CommentObject.set("name",eventName);
+		CommentObject.set = ("venue", eventVenue);
+		CommentObject.set = ("town", eventTown);
+		CommentObject.set = ("state", eventState);
+                CommentObject.set = ("day", eventDay);
+		CommentObject.set = ("time", eventTime);
+		CommentObject.set = ("cost", eventCost);
+                CommentObject.set = ("file", parseFile);
                 
                 var comment = new CommentObject();
                 comment.save(data,{
                     success:function() {
                         console.log("Success");
-                        alert("You've created an event, now invite your friends!");
+                        alert("You've created an event");
                     },
                     error:function(e) {
                         console.dir(e);
                     }
                 });
 	
-    });*/
+            });
 
-}; 
+        }else{
+            console.log("error");
+            
+        }
 
-
+    });
 
 function getList(CommentObject){
     console.log("getList" + CommentObject);
