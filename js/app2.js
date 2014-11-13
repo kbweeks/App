@@ -67,6 +67,7 @@ function saveEvent(){
                 var comment = new CommentObject();
                 comment.save(data,{
                     success:function() {
+                        $('#spinner').hide();
                         console.log("Success");
                         alert("You've created an event");
                     },
