@@ -2,6 +2,13 @@
 //Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
 var htmlBuilder = "";
 $(document).ready(function() {
+    
+        var parseAPPID = "x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA";
+        var parseJSID = "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8";
+        
+        Parse.initialize(parseAPPID, parseJSID);
+       
+       var CommentObject = Parse.Object.extend("CommentObject"); 
         
       getList(CommentObject);
 });
@@ -33,11 +40,8 @@ function getList(CommentObject){
 function saveEvent(){
     console.log("saveEvent()");
     
-      var parseAPPID = "x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA";
-        var parseJSID = "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8";
+      
         
-        Parse.initialize(parseAPPID, parseJSID);
-        var CommentObject = Parse.Object.extend("CommentObject");
         
         //getList(CommentObject);
         
