@@ -11,29 +11,31 @@ $(document).ready(function() {
        
        var CommentObject = Parse.Object.extend("CommentObject");
        
-     
+        $("#save-event").click(function() {
+            console.log("********************save btn clicked*********************");
+            saveEvent();
+            e.preventDefault();
+            return false;
+        });
+       
        
         $("#camera-btn").click(function() {
             console.log("camera btn clicked");
             capturePhoto();
+            e.preventDefault();
             return false;
         });
         
-        $("#save-event").click(function() {
-            console.log("save btn clicked");
-            saveEvent();
-            return false;
-        });
-       
+        
        
         
-     // getList(CommentObject);
+      getList(CommentObject);
 });
   
 
 function saveEvent(){
     $('#spinner').show();
-    console.log("saveEvent()");
+    console.log("8 88 88 88888888  8888888888saveEvent()");
   
 	
 		console.log("Handling the submit");
