@@ -16,21 +16,6 @@ function onDeviceReady() {
        
        var CommentObject = Parse.Object.extend("CommentObject");
        
-        $("#save-event").click(function() {
-            console.log("********************save btn clicked*********************");
-            saveEvent();
-            e.preventDefault();
-            return false;
-        });
-       
-       
-        $("#camera-btn").click(function() {
-            console.log("camera btn clicked");
-            capturePhoto();
-            e.preventDefault();
-            return false;
-        });
-        
         
        
         
