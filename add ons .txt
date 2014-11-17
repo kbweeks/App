@@ -1,0 +1,85 @@
+add ons
+
+-------- fills exampleevent.html page ---------------
+
+function makePage(CommentObject){
+    console.log("makePage" + CommentObject);
+    var query = new Parse.Query(CommentObject);
+    query.find({
+        success: function(results) {
+            console.log(results);
+            $.each(results, function( index, value ) {
+            console.log(results[index].attributes.cost);
+            htmlBuilder +=  '<div class="margin-15">' + '<h1>' + results[index].attributes.name + '</h1>' +
+	    '<table>' + '<tr>' + '<td>' + "WHERE :" + '</td>' + '<td>' + results[index].attributes.venue + '</td>' + '</tr>' +
+	    '<tr>' + '<td>' + "TOWN :" + '</td>' + '<td>' + results[index].attributes.town + '</td>' + '</tr>' +
+	    '<tr>' + '<td>' + "WHEN :" + '</td>' + '<td>' + results[index].attributes.date + '</td>' + '</tr>' +
+	    '<tr>' + '<td>' + "TIME :" + '</td>' + '<td>' + results[index].attributes.time + '</td>' + '</tr>' +
+	    '<tr>' + '<td>' + "COST :" + '</td>' + '<td>' + results[index].attributes.cost + '</td>' + '</tr>' +
+		'</table>' + '</br>' + '</div>' + '<h4>' + results[index].attributes.description + '</h4>';
+
+});
+            $("#event-page").html(htmlBuilder);
+        },
+        
+        error: function(error) {
+        }
+        
+	
+    }); 
+    
+
+
+
+
+
+---------- Going/Not Going and increase number on click - now how to add number ------------
+
+<button data-text-swap="Going">Not Going</button>
+
+var button = document.querySelectorAll("button")[0];
+button.addEventListener('click', function() {
+  if (button.getAttribute("data-text-swap") == button.innerHTML) {
+    button.innerHTML = button.getAttribute("data-text-original");
+  } else {
+    button.setAttribute("data-text-original", button.innerHTML);
+    button.innerHTML = button.getAttribute("data-text-swap");
+  }
+}, false);
+
+
+
+[******* DONT FORGET TO ADD FORM TO BUTTON********]
+
+
+
+
+---------------Geo point and descending order (or can I use stack overflow example -how?) -------------
+var lat;
+var long;
+var findLocation;
+
+var point = new Parse.GeoPoint({latitude: 40.0, longitude: -30.0});
+
+function getPoint(position){
+	
+	lat=position.coords.latitude;
+	long=position.coords.longitude;
+	
+	
+	findLocation = new Parse.GeoPoint({latitude: lat, longitude: long});
+	
+}
+
+----put this at top?------
+navigator.geolocation.getCurrentPosition(getPoint, {enableHighAccuracy: true, maximumAge: 5000, timeout: 5000 });
+
+
+    var userGeoPoint = CommentObject.get("location");
+    var query = new Parse.Query(PlaceObject);
+    query.near("location", userGeoPoint);
+    query.limit(10);
+    query.find({
+    success: function(placesObjects) {
+	}
+    });
