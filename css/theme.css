@@ -6,7 +6,7 @@
     background:#999999;
 }
 .bottom-bar{
-    position:fixed;
+    position:absolute;
     bottom:0px;
     width:100%;
     z-index:1;
