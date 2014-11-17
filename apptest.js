@@ -1,13 +1,17 @@
 
 var htmlBuilder = "";
+
 var currentLocation;
+
+CommentObject = Parse.Object.extend("CommentObject");
+
 $(document).ready(function() {
         
         var parseAPPID = "x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA";
         var parseJSID = "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8";
         
         Parse.initialize(parseAPPID, parseJSID);
-        var CommentObject = Parse.Object.extend("CommentObject");
+        
 	
 	getList(CommentObject);
 	
@@ -23,7 +27,7 @@ $(document).ready(function() {
 			alert("Sorry, we couldn't find your location. Try connecting to Wi-Fi or try again later.");
 		});
 
-    }
+	}
 	
 	
 	$("#commentForm").on("submit", function(e) {
@@ -55,7 +59,7 @@ $(document).ready(function() {
 			},{
 				success:function(object) {
 					console.log("Saved object");
-					alert("You've created an event", function() { document.location.href='index.html'; });
+					alert("You've created an event");
 				},
 				error:function(model, error) {
 					console.log("Please try again later.");
@@ -64,11 +68,11 @@ $(document).ready(function() {
  
 	});
 
-});
+
 
 if($("#event").length === 1) {
  
-	//Update status to let the user know we are doing important things. Really important.
+	//Update status 
 	$("#event").html("Checking your location for nearby events.");
  
 	navigator.geolocation.getCurrentPosition(function(pos) {
@@ -89,6 +93,7 @@ if($("#event").length === 1) {
 	},{timeout:20000,enableHighAccuracy:false});
 }
 
+});
 
 function getList(CommentObject){
     console.log("getList" + CommentObject);
