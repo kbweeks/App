@@ -16,12 +16,14 @@ $(document).ready(function() {
 	getList(CommentObject);
 	
 	
+	
+	
 	 if($("#submitEventBtn").length === 1) {
 		currentLocation=null;
 		navigator.geolocation.getCurrentPosition(function(pos) {
 			//store the long/lat
-			currentLocation = {longitude:pos.coords.longitude, latitude:pos.coords.latitude};
-			$("#sumbitEventBtn").removeAttr("disabled");
+			currentLocation = {latitude:position.coords.latitude, longitude:position.coords.longitude};
+			$("#sumbitEventBtn");
 		}, function(err) {
 			//Since geolocation failed, we can't allow the user to submit
 			alert("Sorry, we couldn't find your location. Try connecting to Wi-Fi or try again later.");
@@ -70,7 +72,7 @@ $(document).ready(function() {
 
 
 
-if($("#event").length === 1) {
+ if($("#event").length === 1) {
  
 	//Update status 
 	$("#event").html("Checking your location for nearby events.");
@@ -82,8 +84,9 @@ if($("#event").length === 1) {
 		var query = new Parse.Query(TipObject);
 		//Only within 10 miles
 		query.withinMiles("location", myLocation, 10);
+		query.descending("createdAt");
 		query.find({
-			success:function(results) { getList(CommentObject,myLocation); },
+			success:function(results) { getList(CommentObject); },
 			error: function(error) { alert("Error: " + error.code + " " + error.message); }
 		});
  
@@ -93,7 +96,7 @@ if($("#event").length === 1) {
 	},{timeout:20000,enableHighAccuracy:false});
 }
 
-});
+}); 
 
 function getList(CommentObject){
     console.log("getList" + CommentObject);
