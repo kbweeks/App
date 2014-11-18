@@ -1,3 +1,4 @@
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
 // PhoneGap is ready
@@ -5,7 +6,7 @@ function onDeviceReady() {
 	console.log("onDeviceReady()");
 	navigator.geolocation.getCurrentPosition(function(pos) {
 			//store the long/lat
-			currentLocation = {longitude:pos.coords.longitude, latitude:pos.coords.latitude};
+			currentLocation = {longitude:pos.coords.longitude, latitude:pos.coords.latitude},{timeout:80000,enableHighAccuracy:false};
 	
 		
 	});
@@ -104,7 +105,7 @@ $(document).ready(function() {
 		}, function(err) {
 			//Since geolocation failed, we can't allow the user to submit
 			alert("Sorry, we couldn't find your location.");
-		},{timeout:80000,enableHighAccuracy:false});
+		});
     }
 });
 
