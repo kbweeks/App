@@ -12,13 +12,27 @@ document.addEventListener("deviceready", onDeviceReady, false);
 // PhoneGap is ready
 function onDeviceReady() {
 	console.log("onDeviceReady()");
-	navigator.geolocation.getCurrentPosition(function(pos) {
-			//store the long/lat
-			currentLocation = {longitude:pos.coords.longitude, latitude:pos.coords.latitude},{timeout:80000,enableHighAccuracy:false};
+	navigator.geolocation.getCurrentPosition(getPoint, onError);
 	console.log(pos);
 		
-	});
+	};
+
+
+
+function getPoint(position) {
+	lat=position.coords.latitude;
+	long=position.coords.longitude;
+	
+	
+	currentLocation = new Parse.GeoPoint({latitude: lat, longitude: long});
 }
+
+
+function onError(error) {
+        console.log("onError()");
+        alert('code: '    + error.code    + '\n' +
+                'message: ' + error.message + '\n');
+    }
 
 
 
@@ -88,26 +102,20 @@ $(document).ready(function() {
 		//Update status 
 		$("#event").html("Loading Content...");
 
-		navigator.geolocation.getCurrentPosition(function(pos) {
-			var myLocation = new Parse.GeoPoint({latitude: pos.coords.latitude, longitude: pos.coords.longitude});
+		navigator.geolocation.getCurrentPosition(getPoint, onError);
+			
 
 			//Begin our query
 			var query = new Parse.Query(CommentObject);
 			//Only within 10 miles
-			query.withinMiles("geoPoint", myLocation, 10);
-			//only within last week
-			var lastWeek = new Date();
-			lastWeek.setDate(lastWeek.getDate()-7);
-			query.greaterThan("createdAt", lastWeek);
+			query.withinMiles("geoPoint", currentLocation, 10);
 			query.find({
-				success:function(results) { getList(results,myLocation); },
+				success:function(results) { getList(results,currentLocation); },
 				error: function(error) { alert("Error: " + error.code + " " + error.message); }
 			});
 
-		}, function(err) {
-			//Since geolocation failed, we can't allow the user to submit
-			alert("Sorry, where are you?.");
-		});
+		
+		
     }
     
     
