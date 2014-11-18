@@ -40,7 +40,7 @@ $(document).ready(function() {
 			alert("Sorry, but we couldn't find your location.");
 		});
 
-    }
+	}
     
     $("#commentForm").on("submit", function(e) {
 	e.preventDefault();
@@ -76,9 +76,9 @@ $(document).ready(function() {
 				error:function(model, error) {
 					console.log(":(");
 				}
-			});
+		});
  
-	});
+	
 	
 	
 	if($("#event").length === 1) {
@@ -107,6 +107,9 @@ $(document).ready(function() {
 			alert("Sorry, where are you?.");
 		});
     }
+    
+    
+    });
 });
 
 
