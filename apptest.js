@@ -6,10 +6,12 @@ var htmlBuilder = "";
 var currentLocation;
 
 
+
 $(document).ready(function() {
         
 	
 	getList(CommentObject);
+	
 	
 	
 	if($("#sumbitEventBtn").length === 1) {
@@ -50,7 +52,7 @@ $(document).ready(function() {
 				time:time,
 				cost:cost,
 				description:description,
-				location:point
+				geoPoint:point
 			},{
 				success:function(object) {
 					console.log("Saved object");
@@ -104,7 +106,7 @@ function getList(CommentObject){
             $.each(results, function( index, value ) {
             console.log(results[index].attributes.cost);
             htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-9 columns">' + '<ul>' + results[index].attributes.name + '</br>' + results[index].attributes.venue + " : " + results[index].attributes.town + ", " + results[index].attributes.state +  '</br>' + results[index].attributes.day + " | " + results[index].attributes.time + '</br>'
-            + results[index].attributes.cost + '</ul>' + '</div>' + '<div class="small-2 columns">'+ '</div>' +'<div class="small-2 columns">'+'<button id="element1" onclick="javascript:changeText(1)">Not Going</button>' + '</br>' + '<div class="friend-box">' + '<i class="fi-torso">' + " 3" + '</i>' + '</div>' + '</div>' + '</div>' + '</div>' + '</a>';
+            + results[index].attributes.cost + '</ul>' + '</div>' +'<div class="small-2 columns">'+'<button data-text-swap="Going">Not Going</button>' + '</br>' + '<div class="friend-box">' + '<i class="fi-torso">' + " 3" + '</i>' + '</div>' + '</div>' + '</div>' + '</div>' + '</a>';
 });
             $("#event").html(htmlBuilder);
         },
@@ -116,4 +118,15 @@ function getList(CommentObject){
         
     });
 	
-}	
+}
+
+
+var button = document.querySelectorAll("button")[0];
+button.addEventListener('click', function() {
+  if (button.getAttribute("data-text-swap") == button.innerHTML) {
+    button.innerHTML = button.getAttribute("data-text-original");
+  } else {
+    button.setAttribute("data-text-original", button.innerHTML);
+    button.innerHTML = button.getAttribute("data-text-swap");
+  }
+}, false);
