@@ -1,5 +1,20 @@
 add ons
 
+
+
+----------sticky nav-------------
+$.ui.ready(function(){
+	console.log("navbar");
+      $("#bottom-bar").css("bottom", "auto");
+      $("#bottom-bar").css("top",(85 + $("#content").offset().height) + "px"); //44px is the height of the header
+   });
+
+window.onresize = function(){ $("#content").css("bottom", "-50px"); }; // 50px is the height of the footer
+
+
+
+
+
 -------- fills exampleevent.html page ---------------
 
 function makePage(CommentObject){
@@ -50,7 +65,6 @@ button.addEventListener('click', function() {
 
 
 [******* DONT FORGET TO ADD FORM TO BUTTON********]
-
 
 
 
