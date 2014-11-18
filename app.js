@@ -45,12 +45,19 @@ $(document).ready(function() {
 
 });
 
-$.ui.ready(function(){
-	console.log("navbar");
-      $("#bottom-bar").css("bottom", "auto");
-      $("#bottom-bar").css("top",(85 + $("#content").offset().height) + "px"); //44px is the height of the header
-   });
+if (Modernizr.touch) {
+    /* cache dom references */ 
+    var $body = jQuery('body'); 
 
+    /* bind events */
+    $(document)
+    .on('focus', 'input', function(e) {
+        $body.addClass('fixfixed');
+    })
+    .on('blur', 'input', function(e) {
+        $body.removeClass('fixfixed');
+    });
+} 
  
 
 function getList(CommentObject){

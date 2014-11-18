@@ -210,7 +210,9 @@ button:hover {
     padding-top:9px;
     margin-right:3px;
 }
-
+.fixfixed .header {
+    position:absolute;
+}
 
 
 /**** Manage Friends ****/
