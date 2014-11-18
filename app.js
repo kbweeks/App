@@ -46,11 +46,12 @@ $(document).ready(function() {
 });
 
 $.ui.ready(function(){
+	console.log("navbar");
       $("#bottom-bar").css("bottom", "auto");
       $("#bottom-bar").css("top",(85 + $("#content").offset().height) + "px"); //44px is the height of the header
    });
 
-   window.onresize = function(){ $("#content").css("bottom", "-85px"); }; // 50px is the height of the footer
+ 
 
 function getList(CommentObject){
     console.log("getList" + CommentObject);
