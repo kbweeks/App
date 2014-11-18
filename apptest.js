@@ -94,7 +94,7 @@ $(document).ready(function() {
 			//Begin our query
 			var query = new Parse.Query(CommentObject);
 			//Only within 10 miles
-			query.withinMiles("location", myLocation, 10);
+			query.withinMiles("geoPoint", myLocation, 10);
 			//only within last week
 			var lastWeek = new Date();
 			lastWeek.setDate(lastWeek.getDate()-7);
