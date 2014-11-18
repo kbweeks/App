@@ -29,7 +29,7 @@ $(document).ready(function() {
 	
 	
 	
-	if($("#sumbitEventBtn").length === 1) {
+	if($("#submitEventBtn").length === 1) {
 		currentLocation=null;
 		navigator.geolocation.getCurrentPosition(function(pos) {
 			//store the long/lat
@@ -104,7 +104,7 @@ $(document).ready(function() {
 
 		}, function(err) {
 			//Since geolocation failed, we can't allow the user to submit
-			alert("Sorry, we couldn't find your location.");
+			alert("Sorry, where are you?.");
 		});
     }
 });
