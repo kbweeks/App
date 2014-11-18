@@ -5,7 +5,18 @@ var htmlBuilder = "";
 
 var currentLocation;
 
+document.addEventListener("deviceready", onDeviceReady, false);
 
+// PhoneGap is ready
+function onDeviceReady() {
+	console.log("onDeviceReady()");
+	navigator.geolocation.getCurrentPosition(function(pos) {
+			//store the long/lat
+			currentLocation = {longitude:pos.coords.longitude, latitude:pos.coords.latitude};
+	
+		
+	});
+}
 
 $(document).ready(function() {
         
