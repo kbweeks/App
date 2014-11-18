@@ -116,13 +116,15 @@ p{
 .button-bar{
     text-align:center;
 }
+
 .button{
     background-color:#999999;
-    font-size:20pt;
+    font-size:12pt;
     margin:3px 0px 0px 3px;
     height:70px;
     width:90px;
 }
+
 .button:hover{
     background-color:#333333;
 }
@@ -166,10 +168,13 @@ label {
     font-size:1rem;
 }
 button, .button {
-    font-size:2em;
-    padding:4px 20px;
+    font-size:10pt;
+    padding:4px 10px;
     margin:0px;
     background-color: #999999;
+}
+button:focus {
+    background-color:black;
 }
 button:hover {
     background-color: #333333;
