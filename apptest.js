@@ -1,4 +1,12 @@
 
+Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
+CommentObject = Parse.Object.extend("CommentObject");
+
+var htmlBuilder = "";
+
+var currentLocation;
+
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
 // PhoneGap is ready
@@ -7,18 +15,11 @@ function onDeviceReady() {
 	navigator.geolocation.getCurrentPosition(function(pos) {
 			//store the long/lat
 			currentLocation = {longitude:pos.coords.longitude, latitude:pos.coords.latitude},{timeout:80000,enableHighAccuracy:false};
-	
+	console.log(pos);
 		
 	});
 }
 
-
-Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
-CommentObject = Parse.Object.extend("CommentObject");
-
-var htmlBuilder = "";
-
-var currentLocation;
 
 
 
@@ -34,6 +35,7 @@ $(document).ready(function() {
 		navigator.geolocation.getCurrentPosition(function(pos) {
 			//store the long/lat
 			currentLocation = {longitude:pos.coords.longitude, latitude:pos.coords.latitude};
+			console.log(pos);
 			$("#sumbitEventBtn");
 		}, function(err) {
 			//Since geolocation failed, we can't allow the user to submit
