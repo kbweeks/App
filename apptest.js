@@ -1,10 +1,3 @@
-Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
-CommentObject = Parse.Object.extend("CommentObject");
-
-var htmlBuilder = "";
-
-var currentLocation;
-
 document.addEventListener("deviceready", onDeviceReady, false);
 
 // PhoneGap is ready
@@ -17,6 +10,16 @@ function onDeviceReady() {
 		
 	});
 }
+
+
+Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
+CommentObject = Parse.Object.extend("CommentObject");
+
+var htmlBuilder = "";
+
+var currentLocation;
+
+
 
 $(document).ready(function() {
         
@@ -101,7 +104,7 @@ $(document).ready(function() {
 		}, function(err) {
 			//Since geolocation failed, we can't allow the user to submit
 			alert("Sorry, we couldn't find your location.");
-		},{timeout:30000,enableHighAccuracy:false});
+		},{timeout:80000,enableHighAccuracy:false});
     }
 });
 
