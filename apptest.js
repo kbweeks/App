@@ -19,7 +19,7 @@ $(document).ready(function() {
 		navigator.geolocation.getCurrentPosition(function(pos) {
 			//store the long/lat
 			currentLocation = {longitude:pos.coords.longitude, latitude:pos.coords.latitude};
-			$("#sumbitEventBtn").removeAttr("disabled");
+			$("#sumbitEventBtn");
 		}, function(err) {
 			//Since geolocation failed, we can't allow the user to submit
 			alert("Sorry, but we couldn't find your location.");
@@ -90,7 +90,7 @@ $(document).ready(function() {
 		}, function(err) {
 			//Since geolocation failed, we can't allow the user to submit
 			alert("Sorry, we couldn't find your location.");
-		},{timeout:50000,enableHighAccuracy:false});
+		},{timeout:30000,enableHighAccuracy:false});
     }
 });
 
