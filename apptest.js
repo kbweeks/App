@@ -90,7 +90,7 @@ $(document).ready(function() {
 		}, function(err) {
 			//Since geolocation failed, we can't allow the user to submit
 			alert("Sorry, we couldn't find your location.");
-		},{timeout:20000,enableHighAccuracy:false});
+		},{timeout:50000,enableHighAccuracy:false});
     }
 });
 
