@@ -130,17 +130,26 @@ $(document).ready(function() {
 function getList(CommentObject){
     console.log("getList" + CommentObject);
     var query = new Parse.Query(CommentObject);
+    console.log(query);
+    query.descending("currentGoing");
     query.find({
         success: function(results) {
             console.log(results);
             $.each(results, function( index, value ) {
             console.log(results[index].attributes.cost);
+	    console.log(results[index].id);
+	    var currentGoing = results[index].attributes.currentGoing;
+	    if (currentGoing == undefined) {
+		currentGoing = 0;
+	    }
+	    
             htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-9 columns">' + '<ul>' + results[index].attributes.name + '</br>' + results[index].attributes.venue + " : " + results[index].attributes.town + ", " + results[index].attributes.state +  '</br>' + results[index].attributes.day + " | " + results[index].attributes.time + '</br>'
-            + results[index].attributes.cost + '</ul>' + '</div>' +'<div class="small-2 columns">'+'<input class="text-swap" value="Not Going" type="button" />' + '</br>' + '<div class="friend-box">' + '<i class="fi-torso">' + '<span class="counter"> 0</span>' + '</i>' + '</div>' + '</div>' + '</div>' + '</div>' + '</a>';
+            + results[index].attributes.cost + '</ul>' + '</div>' +'<div class="small-2 columns">'+'<input id="' + results[index].id + '" class="text-swap" value="Not Going" type="button" />' + '</br>' + '<div class="friend-box">' + '<i class="fi-torso"></i>' + '<span class="counter">' + currentGoing +'</span>' + '' + '</div>' + '</div>' + '</div>' + '</div>' + '</a>';
 });
             $("#event").html(htmlBuilder);
 	    buttonClick();
         },
+	
         
         error: function(error) {
         }
@@ -151,6 +160,11 @@ function getList(CommentObject){
 	
 }
 
+
+
+
+
+
 function buttonClick(){
 	console.log("button");
 //var button = document.querySelectorAll("button")[0];
@@ -158,16 +172,30 @@ function buttonClick(){
 $(".text-swap").on( "click", function() {
 	console.log("clicked");
 	var button = $(this);
-	var counter = $(this).siblings(".counter");
-	console.log(counter);
 	console.log(button.attr('value'));
   if (button.attr('value') == "Not Going") {
 	button.attr('value', 'Going');
+	//add plus 1
+	updateGoing(1);
   } else {
 	button.attr('value', 'Not Going');
+	//subtract 1
+	updateGoing(-1);
 
   }
   
 });
 
 }
+
+function updateGoing(value){
+	//currentGoing = currentGoing + value
+	//update function in parse - which item they clicked on (query.find one result by objectId), do a save only changing that one field
+	//take its number add 1 or subtract 1, update database with new number
+	//then after that, write to html
+	//key word being find
+}
+
+//if statement - if currentGoing is less than 0, set current going to 0, if currentGoing is undefined, set current going to 0
+
+//event listener, take id of focus, $ has a css property - change it to top 0
