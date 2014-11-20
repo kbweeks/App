@@ -63,6 +63,8 @@ function stopFocus() {
 
 }
 
+document.write( '<style>#footer{visibility:hidden}@media(min-height:' + ($( window ).height() - 10) + 'px){#footer{visibility:visible}}</style>' );
+
 $(document).ready(function() {
         
 	
