@@ -59,10 +59,10 @@ a {
 .friend-box{
     border-width:2px;
     border-style:solid;
-    padding-bottom:2px;
+    padding-bottom:15px;
     text-align:left;
-    height:60px;
-    width:60px;
+    height:61px;
+    width:62px;
     border-radius:50%;
     line-height:60px;
     background-color:white;
@@ -157,23 +157,18 @@ td {
 /******add page*****/
 input {
     font-family:"Archivo Narrow";
-    font-size:14pt;
-    background-color: #333333;
     color:white;
     border:none;
-    padding:10px;
+    font-size:10pt;
+    padding:5px 6px;
+    margin-bottom:10px;
+    background-color: #999999;
     
 }
 label {
     font-size:1rem;
 }
-button, .button {
-    font-size:8pt;
-    padding:4px 5px;
-    margin-bottom:10px;
-    background-color: #999999;
-    
-}
+
 button:focus {
     background-color:black;
 }
@@ -218,6 +213,9 @@ button:hover {
 }
 .fixfixed .bottom-bar {
     position:absolute;
+}
+.counter {
+    font-size:18pt;
 }
 
 

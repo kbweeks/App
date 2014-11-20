@@ -34,7 +34,9 @@ function onError(error) {
                 'message: ' + error.message + '\n');
     }
 
+//trying to make nav not popup
 function noFocus() {
+	
 if (Modernizr.touch) {
     /* cache dom references */ 
     var $body = jQuery('body'); 
@@ -47,7 +49,8 @@ if (Modernizr.touch) {
     .on('blur', 'input', function(e) {
         $body.removeClass('fixfixed');
     });
-} 
+}
+
 }
 
 $(document).ready(function() {
@@ -159,7 +162,7 @@ function getList(CommentObject){
             htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-9 columns">' + '<ul>' + results[index].attributes.name + '</br>' + results[index].attributes.venue + " : " + results[index].attributes.town + ", "
 	    + results[index].attributes.state +  '</br>' + results[index].attributes.day + " | " + results[index].attributes.time + '</br>'
             + results[index].attributes.cost + '</ul>' + '</div>' +'<div class="small-2 columns">'+'<input id="' + results[index].id + '" class="text-swap" value="Not Going" type="button" />' + '</br>' +
-	    '<div class="friend-box">' + '<i class="fi-torso"></i>' + '<span class="counter">' + currentGoing +'</span>' + '' + '</div>' + '</div>' + '</div>' + '</div>' + '</a>';
+	    '<div class="friend-box">' + '<i class="fi-torso"></i> ' + '<span class="counter">' + currentGoing +'</span>' + '' + '</div>' + '</div>' + '</div>' + '</div>';
 });
             $("#event").html(htmlBuilder);
 	    buttonClick();
