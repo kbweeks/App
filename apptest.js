@@ -1,4 +1,7 @@
 
+
+
+
 Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
 CommentObject = Parse.Object.extend("CommentObject");
 
@@ -51,6 +54,10 @@ if (Modernizr.touch) {
     });
 }
 
+function stopFocus() {
+	$("#bottom-bar").css({"top":"0"});
+}
+
 }
 
 $(document).ready(function() {
@@ -59,7 +66,9 @@ $(document).ready(function() {
 	getList(CommentObject);
 	
 	$("#hide").click(function(){
-	$(".box").hide();
+		console.log("running-hide");
+		var which = $(this).index();
+		$(".box").find('.box').hide().eq(which);
 	});
 	
 	
