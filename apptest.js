@@ -58,7 +58,9 @@ $(document).ready(function() {
 	
 	getList(CommentObject);
 	
-	
+	$("#hide").click(function(){
+	$(".box").hide();
+	});
 	
 	
 	
@@ -157,10 +159,10 @@ function getList(CommentObject){
 		currentGoing = 0;
 	    }
 	    
-            htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-9 columns">' + '<ul>' + results[index].attributes.name + '</br>' + results[index].attributes.venue + " : " + results[index].attributes.town + ", "
+            htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-10 columns">' + '<ul>' + '</br>' + results[index].attributes.name + '</br>' + results[index].attributes.venue + " : " + results[index].attributes.town + ", "
 	    + results[index].attributes.state +  '</br>' + results[index].attributes.day + " | " + results[index].attributes.time + '</br>'
-            + results[index].attributes.cost + '</ul>' + '</div>' +'<div class="small-3 columns">'+'<input id="' + results[index].id + '" class="text-swap" value="Not Going" type="button" />' + '</br>' +
-	    '<div class="friend-box">' + '<i class="fi-torso"></i> ' + '<span class="counter">' + currentGoing +'</span>' + '' + '</div>' + '</div>' + '</div>' + '</div>';
+            + results[index].attributes.cost + '</ul>' + '</div>' + '<div class="small-1 columns">'+ '<div id="place-x">' +'<button id="hide">X</button>' + '</div>'+'<input id="' + results[index].id + '" class="text-swap" value="Not Going" type="button" />' + '</br>' +
+	    '<div class="friend-box">' + '<i class="fi-torso"></i> ' + '<span class="counter">' + currentGoing +'</span>' + '' + '</div>' + '</div>' +'</div>' + '</div>';
 });
             $("#event").html(htmlBuilder);
 	    buttonClick();
