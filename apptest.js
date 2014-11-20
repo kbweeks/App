@@ -18,7 +18,7 @@ function onDeviceReady() {
 	navigator.geolocation.getCurrentPosition(getPoint, onError);
 	console.log(pos);
 	
-	var footer = $(".footer");
+	var bottomBar = $(".bottom-bar");
 	bottom-bar.css({ "top": bottom-bar.position().top, "bottom": "auto"});
 		
 	};
