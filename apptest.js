@@ -38,7 +38,7 @@ function onError(error) {
     }
 
 //trying to make nav not popup
-function noFocus() {
+/*function noFocus() {
 	
 $('input, textarea')
 .on('focus', function (e) {
@@ -58,7 +58,7 @@ function stopFocus() {
 	$("#bottom-bar").css({"top":"0"});
 }
 
-}
+}*/
 
 $(document).ready(function() {
         
