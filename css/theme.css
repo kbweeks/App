@@ -5,6 +5,12 @@
 .icon-bar > *:hover{
     background:#999999;
 }
+.head-of-page {
+    padding:20px;
+    background-color:#999999;
+    text-align:center;
+}
+
 .bottom-bar{
     position:fixed;
     bottom:0px;
@@ -167,8 +173,8 @@ input {
     margin-bottom:10px !important;
     background-color: black !important;
     margin-left:-2px;
-    
 }
+
 label {
     font-size:1rem;
 }
