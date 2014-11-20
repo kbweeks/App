@@ -5,7 +5,7 @@ CommentObject = Parse.Object.extend("CommentObject");
 var htmlBuilder = "";
 
 var currentLocation;
-
+var currentGoing;
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -87,7 +87,6 @@ $(document).ready(function() {
         var day = $("#day").val();
 	var time = $("#time").val();
 	var cost = $("#cost").val();
-        var description=$("#description").val();
  
 	var comment = new CommentObject();
 	var point = new Parse.GeoPoint({latitude: currentLocation.latitude, longitude: currentLocation.longitude});
@@ -100,7 +99,6 @@ $(document).ready(function() {
 				day:day,
 				time:time,
 				cost:cost,
-				description:description,
 				geoPoint:point
 			},{
 				success:function(object) {
@@ -161,7 +159,7 @@ function getList(CommentObject){
 	    
             htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-9 columns">' + '<ul>' + results[index].attributes.name + '</br>' + results[index].attributes.venue + " : " + results[index].attributes.town + ", "
 	    + results[index].attributes.state +  '</br>' + results[index].attributes.day + " | " + results[index].attributes.time + '</br>'
-            + results[index].attributes.cost + '</ul>' + '</div>' +'<div class="small-2 columns">'+'<input id="' + results[index].id + '" class="text-swap" value="Not Going" type="button" />' + '</br>' +
+            + results[index].attributes.cost + '</ul>' + '</div>' +'<div class="small-3 columns">'+'<input id="' + results[index].id + '" class="text-swap" value="Not Going" type="button" />' + '</br>' +
 	    '<div class="friend-box">' + '<i class="fi-torso"></i> ' + '<span class="counter">' + currentGoing +'</span>' + '' + '</div>' + '</div>' + '</div>' + '</div>';
 });
             $("#event").html(htmlBuilder);
@@ -190,7 +188,10 @@ $(".text-swap").on( "click", function() {
   if (button.attr('value') == "Not Going") {
 	button.attr('value', 'Going');
 	//add plus 1
-	updateGoing(1);
+	var clickedObjectId = this.id;
+	
+	
+	updateGoing(1, clickedObjectId);
   } else {
 	button.attr('value', 'Not Going');
 	//subtract 1
@@ -199,43 +200,49 @@ $(".text-swap").on( "click", function() {
   }
   
 });
-	updateGoing(value);
+	//updateGoing(value);
 }
 
-function updateGoing(value){
+function updateGoing(value, id){
 	//var currentGoing = results[index].attributes.currentGoing;
-	//currentGoing = currentGoing + value;
+	
+	
 	var query = new Parse.Query(CommentObject);
-	query.find({
-	success: function(results) {
-	$.each(results, function( index, value ) {
-	    //console.log(results[index].id);
-	    var getObjectID = results[index].id;
-	    getObjectID.save(
-			{
-				currentGoing:currentGoing + value,
-			},{
+	
+	query.get(id, {
+		success: function(id) {
+			currentGoing = results[index].attributes.currentGoing + value;
+			
+			id.save(
+				{
+				currentGoing:currentGoing,
+  },
+  {
 				success:function(object) {
-					//console.log("updated value");
+					console.log("updated value");
 				},
 				error:function(model, error) {
-					//console.log("wah-wah");
+					console.log("not saved");
 				}
 				
 				 //htmlBuilder += currentGoing
 		});
-		});
- 
-	    
-	    }
-	});
+	},
+  
+  error: function(object, error) {
+    // The object was not retrieved successfully.
+    // warn the user
+    console.log("single id not found");
+  }
+		
+	
+	})
 	
 	
-	
+
 }
-
-
 
 //update function in parse - which item they clicked on (query.find one result by objectId), do a save only changing that one field
 	//then after that, write to html
 //event listener, take id of focus, $ has a css property - change it to top 0
+//

@@ -156,13 +156,13 @@ td {
 }
 /******add page*****/
 input {
-    font-family:"Archivo Narrow";
-    color:white;
-    border:none;
-    font-size:10pt;
-    padding:5px 6px;
-    margin-bottom:10px;
-    background-color: #999999;
+    font-family:"Archivo Narrow" !important;
+    color:white !important;
+    border:none !important;
+    font-size:10pt !important;
+    padding:5px 6px !important;
+    margin-bottom:10px !important;
+    background-color: #999999 !important;
     
 }
 label {

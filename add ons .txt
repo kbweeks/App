@@ -2,6 +2,32 @@ add ons
 
 
 
+
+	query.find({
+	success: function(results) {
+	$.each(results, function( index, value ) {
+	    //console.log(results[index].id);
+	    var getObjectID = results[index].id;
+	    getObjectID.save(
+			{
+				currentGoing:currentGoing + value,
+			},{
+				success:function(object) {
+					//console.log("updated value");
+				},
+				error:function(model, error) {
+					//console.log("wah-wah");
+				}
+				
+				 //htmlBuilder += currentGoing
+		});
+		});
+ 
+	    
+	    }
+	});
+
+
 ----------sticky nav-------------
 
 
