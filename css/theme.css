@@ -166,6 +166,7 @@ input {
     padding:5px 4px !important;
     margin-bottom:10px !important;
     background-color: black !important;
+    margin-left:-2px;
     
 }
 label {
