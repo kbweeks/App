@@ -40,19 +40,19 @@ function onError(error) {
 //trying to make nav not popup
 function noFocus() {
 	
-if (Modernizr.touch) {
-    /* cache dom references */ 
-    var $body = jQuery('body'); 
+$('input, textarea')
+.on('focus', function (e) {
+    $('bottom-bar').css('position', 'absolute');
+})
+.on('blur', function (e) {
+    $('bottom-bar').css('position', 'fixed');
+    //force page redraw to fix incorrectly positioned fixed elements
+    setTimeout( function() {
+        window.scrollTo( $.mobile.window.scrollLeft(), $.mobile.window.scrollTop() );
+    }, 20 );
+});
 
-    /* bind events */
-    $(document)
-    .on('focus', 'input', function(e) {
-        $body.addClass('fixfixed');
-    })
-    .on('blur', 'input', function(e) {
-        $body.removeClass('fixfixed');
-    });
-}
+
 
 function stopFocus() {
 	$("#bottom-bar").css({"top":"0"});
