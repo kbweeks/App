@@ -5,11 +5,11 @@
 .icon-bar > *:hover{
     background:#999999;
 }
-.head-of-page {
+/*.head-of-page {
     padding:20px;
     background-color:#999999;
     text-align:center;
-}
+}*/
 
 .bottom-bar{
     position:fixed;
