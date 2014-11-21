@@ -16,8 +16,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 	console.log("onDeviceReady()");
 	navigator.geolocation.getCurrentPosition(getPoint, onError);
-	console.log(pos);
-	
 	
 		
 	};
@@ -38,6 +36,12 @@ function onError(error) {
         alert('code: '    + error.code    + '\n' +
                 'message: ' + error.message + '\n');
     }
+
+$( ".box" ).hide();
+$( "#hide" ).click(function( event ) {
+  event.preventDefault();
+  $( this ).hide();
+});
 
 //trying to make nav not popup
 function noFocus() {
@@ -70,11 +74,7 @@ $(document).ready(function() {
 	
 	getList(CommentObject);
 	
-	$("#hide").click(function(){
-		console.log("running-hide");
-		var which = $(this).index();
-		$(".box").find('.box').hide().eq(which);
-	});
+	
 	
 	
 	
@@ -172,8 +172,8 @@ function getList(CommentObject){
 	    
             htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-10 columns">' + '<ul>' + '</br>' + results[index].attributes.name + '</br>' + results[index].attributes.venue + " : " + results[index].attributes.town + ", "
 	    + results[index].attributes.state +  '</br>' + results[index].attributes.day + " | " + results[index].attributes.time + '</br>'
-            + results[index].attributes.cost + '</ul>' + '</div>' + '<div class="small-1 columns">'+ '<div id="place-x">' +'<button id="hide">X</button>' + '</div>'+'<input id="' + results[index].id + '" class="text-swap" value="Not Going" type="button" />' + '</br>' +
-	    '<div class="friend-box">' + '<i class="fi-torso"></i> ' + '<span class="counter">' + currentGoing +'</span>' + '' + '</div>' + '</div>' +'</div>' + '</div>';
+            + results[index].attributes.cost + '</ul>' + '</div>' + '<div class="small-1 columns">'+ '<div id="place-x">' + '</div>'+'<input id="' + results[index].id + '" class="text-swap" value="Not Going" type="button" />' + '</br>' +
+	    '<div class="friend-box">' + '<i class="fi-torso"></i> ' + '<span class="counter">' + currentGoing +'</span>' + '' + '</div>' + '</div>' +'</div>' + '</div>' + '<button id="hide">X</button>';
 });
             $("#event").html(htmlBuilder);
 	    buttonClick();
@@ -213,11 +213,11 @@ $(".text-swap").on( "click", function() {
   }
   
 });
-	//updateGoing(value);
+	//getUpdateGoing(value, id);
 }
 
 function getUpdateGoing(value, id){
-	
+	console.log("**********" + getUpdateGoing);
 	
 	var query = new Parse.Query(CommentObject);
 	console.log(query);
