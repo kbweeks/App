@@ -56,7 +56,7 @@ $('input, textarea')
 
 
 
-$("input").focus(function(){
+$("#name").focus(function(){
 	$(".bottom-bar").css({"top":"0"});
 
 });
