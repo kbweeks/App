@@ -169,7 +169,9 @@ function getList(CommentObject){
             console.log(results[index].attributes.cost);
 	    console.log(results[index].id);
 	    var currentGoing = results[index].attributes.currentGoing;
-	    
+	    if (currentGoing == undefined) {
+		currentGoing = 0;
+	    }
             htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-10 columns">' + '<ul>' + '</br>' + results[index].attributes.name + '</br>' + results[index].attributes.venue + " : " + results[index].attributes.town + ", "
 	    + results[index].attributes.state +  '</br>' + results[index].attributes.day + " | " + results[index].attributes.time + '</br>'
             + results[index].attributes.cost + '</ul>' + '</div>' + '<div class="small-1 columns">'+ '<div id="place-x">' + '</div>'+'<input id="' + results[index].id + '" class="text-swap" value="Not Going" type="button" />' + '</br>' +
@@ -208,7 +210,7 @@ $(".text-swap").on( "click", function() {
   } else {
 	button.attr('value', 'Not Going');
 	//subtract 1
-	getUpdateGoing(-1, clickedObjectId);
+	getUpdateGoing(-1);
 
   }
   
@@ -227,8 +229,7 @@ function getUpdateGoing(value, id){
 	// object is an instance of Parse.Object.
 	currentGoing = object.attributes.currentGoing;
 	console.log(currentGoing);
-    
-    if (currentGoing == null || currentGoing == undefined) {
+	if (currentGoing == null || currentGoing == undefined) {
 		currentGoing = 0;
 	    }
     
