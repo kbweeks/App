@@ -9,6 +9,7 @@ var htmlBuilder = "";
 
 var currentLocation;
 var currentGoing;
+var exports;
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -45,10 +46,10 @@ function noFocus() {
 	
 $('input, textarea')
 .on('focus', function (e) {
-    $('bottom-bar').css('position', 'absolute');
+    $('.bottom-bar').css('position', 'absolute');
 })
 .on('blur', function (e) {
-    $('bottom-bar').css('position', 'fixed');
+    $('.bottom-bar').css('position', 'fixed');
     //force page redraw to fix incorrectly positioned fixed elements
     setTimeout( function() {
         window.scrollTo( $.mobile.window.scrollLeft(), $.mobile.window.scrollTop() );
@@ -221,38 +222,32 @@ $(".text-swap").on( "click", function() {
 
 function updateGoing(value, id){
 	//var currentGoing = results[index].attributes.currentGoing;
+
+	//var query = new Parse.Query(CommentObject);
 	
+	// Create a pointer to an object of class Point with id dlkj83d
+	var Point = Parse.Object.extend("CommentObject");
+	var point = new Point();
+	point.id =  id;
 	
-	var query = new Parse.Query(CommentObject);
+	// Set a new value on quantity
+	point.set("currentGoing", currentGoing=currentGoing + value);
 	
-	query.get(id, {
-		success: function(id) {
-			currentGoing = results[index].attributes.currentGoing + value;
-			
-			id.save(
-				{
-				currentGoing:currentGoing,
-  },
-  {
-				success:function(object) {
-					console.log("updated value");
-				},
-				error:function(model, error) {
-					console.log("not saved");
-				}
-				
-				 //htmlBuilder += currentGoing
-		});
+	// Save
+	point.save(null, {
+	success: function(point) {
+	  // Saved successfully.
+	  console.log("success");
 	},
-  
-  error: function(object, error) {
-    // The object was not retrieved successfully.
-    // warn the user
-    console.log("single id not found");
-  }
-		
+	error: function(point, error) {
+	  // The save failed.
+	  // error is a Parse.Error with an error code and description.
+	  console.log("fail");
+	}
+	});
+	      
 	
-	})
+	
 	
 	
 
