@@ -9,7 +9,6 @@ var htmlBuilder = "";
 
 var currentLocation;
 var currentGoing;
-var exports;
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -19,8 +18,7 @@ function onDeviceReady() {
 	navigator.geolocation.getCurrentPosition(getPoint, onError);
 	console.log(pos);
 	
-	var bottomBar = $(".bottom-bar");
-	bottom-bar.css({ "top": bottom-bar.position().top, "bottom": "auto"});
+	
 		
 	};
 
@@ -58,11 +56,10 @@ $('input, textarea')
 
 
 
-function stopFocus() {
-	$("#bottom-bar").css({"top":"0"});
-}
+$("input").focus(function(){
+	$(".bottom-bar").css({"top":"0"});
 
-}
+});
 
 document.write( '<style>#footer{visibility:hidden}@media(min-height:' + ($( window ).height() - 10) + 'px){#footer{visibility:visible}}</style>' );
 
@@ -170,9 +167,6 @@ function getList(CommentObject){
             console.log(results[index].attributes.cost);
 	    console.log(results[index].id);
 	    var currentGoing = results[index].attributes.currentGoing;
-	    if (currentGoing == undefined) {
-		currentGoing = 0;
-	    }
 	    
             htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-10 columns">' + '<ul>' + '</br>' + results[index].attributes.name + '</br>' + results[index].attributes.venue + " : " + results[index].attributes.town + ", "
 	    + results[index].attributes.state +  '</br>' + results[index].attributes.day + " | " + results[index].attributes.time + '</br>'
@@ -208,11 +202,11 @@ $(".text-swap").on( "click", function() {
 	var clickedObjectId = this.id;
 	
 	
-	updateGoing(1, clickedObjectId);
+	getUpdateGoing(1, clickedObjectId);
   } else {
 	button.attr('value', 'Not Going');
 	//subtract 1
-	updateGoing(-1);
+	getUpdateGoing(-1, clickedObjectId);
 
   }
   
@@ -220,7 +214,36 @@ $(".text-swap").on( "click", function() {
 	//updateGoing(value);
 }
 
-function updateGoing(value, id){
+function getUpdateGoing(value, id){
+	
+	
+	var query = new Parse.Query(CommentObject);
+	console.log(query);
+	
+	query.get(id, {
+	success: function(object) {
+	// object is an instance of Parse.Object.
+	currentGoing = object.attributes.currentGoing;
+	console.log(currentGoing);
+    
+    if (currentGoing == null || currentGoing == undefined) {
+		currentGoing = 0;
+	    }
+    
+    
+    updateUpdateGoing(currentGoing, id, value);
+  },
+
+  error: function(object, error) {
+    // error is an instance of Parse.Error.
+  }
+});
+}
+
+function updateUpdateGoing(currentGoing, id, value){
+	
+	
+	
 	//var currentGoing = results[index].attributes.currentGoing;
 
 	//var query = new Parse.Query(CommentObject);
@@ -230,7 +253,10 @@ function updateGoing(value, id){
 	var point = new Point();
 	point.id =  id;
 	
-	var newVal = currentGoing=currentGoing + value;
+	
+	console.log(currentGoing);
+	var newVal = currentGoing + value;
+	console.log(newVal);
 	// Set a new value on quantity
 	point.set("currentGoing", newVal);
 	
@@ -247,7 +273,6 @@ function updateGoing(value, id){
 	}
 	});
 	      
-	
 	
 	
 	
