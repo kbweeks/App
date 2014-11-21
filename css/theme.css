@@ -3,7 +3,10 @@
 }
 /**** menu ****/
 .icon-bar > *:hover{
-    background:#999999;
+    background:#62ccf9;
+}
+.icon-bar {
+    background:#62ccf9;
 }
 .head-of-page {
     padding:20px;
@@ -35,7 +38,9 @@ body{
 ul {
     margin-left:0rem;
     font-size:13pt;
+    color: #777777;
 }
+
 #place-x {
     padding-left:50px;
 }
@@ -48,6 +53,7 @@ ul {
     padding-top:5px;
     border-bottom:2px solid;
     z-index:1;
+    border-color:#777777;
 }
 .content {
 }
@@ -59,7 +65,7 @@ a {
 }
 .fi-torso {
     font-size:16pt;
-    color:black;
+    color:white;
     font-family: "Archivo Narrow";
     font-style: normal;
     margin-bottom:2px;
@@ -74,7 +80,8 @@ a {
     width:62px;
     border-radius:50%;
     line-height:60px;
-    background-color:white;
+    background-color:#62ccf9;;
+    border-color: #777777;
 }
 .scroll {
     padding-bottom:200px;
@@ -171,8 +178,9 @@ input {
     font-size:10pt !important;
     padding:5px 4px !important;
     margin-bottom:10px !important;
-    background-color: black !important;
+    background-color: #62ccf9 !important;
     margin-left:-2px;
+    border-color:#777777;
 }
 
 label {
@@ -231,10 +239,11 @@ button:active {
 }
 .counter {
     font-size:18pt;
+    color:white;
 }
 button, .button {
     background-color:white;
-    color:black;
+    color:#777777;
     padding:0px;
     text-align:left;
 }
