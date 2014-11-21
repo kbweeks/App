@@ -16,8 +16,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 	console.log("onDeviceReady()");
 	navigator.geolocation.getCurrentPosition(getPoint, onError);
-	
-		
+	fixBar()
+;		
 	};
 
 
@@ -44,26 +44,21 @@ $( "#hide" ).click(function( event ) {
 });
 
 //trying to make nav not popup
-function noFocus() {
-	
-$('input, textarea')
-.on('focus', function (e) {
-    $('.header').css('position', 'absolute');
-})
-.on('blur', function (e) {
-    $('.header').css('position', 'fixed');
-    //force page redraw to fix incorrectly positioned fixed elements
-    setTimeout( function() {
-        window.scrollTo( $.mobile.window.scrollLeft(), $.mobile.window.scrollTop() );
-    }, 20 );
-});
+function fixBar() {
+	/* we need this only on touch devices */
+if (Modernizr.touch) {
+    /* cache dom references */ 
+    var $body = jQuery('body'); 
 
-
-
-$("#name").focus(function(){
-	$(".bottom-bar").css({"top":"0"});
-
-});
+    /* bind events */
+    $(document)
+    .on('focus', 'input', function(e) {
+        $body.addClass('fixfixed');
+    })
+    .on('blur', 'input', function(e) {
+        $body.removeClass('fixfixed');
+    });
+} 
 
 }
 
@@ -204,13 +199,15 @@ $(".text-swap").on( "click", function() {
 	button.attr('value', 'Going');
 	//add plus 1
 	var clickedObjectId = this.id;
-	
+	console.log("inside if not going");
 	
 	getUpdateGoing(1, clickedObjectId);
   } else {
+	console.log("inside going");
 	button.attr('value', 'Not Going');
+	var clickedObjectId = this.id;
 	//subtract 1
-	getUpdateGoing(-1);
+	getUpdateGoing(-1, clickedObjectId);
 
   }
   
@@ -219,11 +216,11 @@ $(".text-swap").on( "click", function() {
 }
 
 function getUpdateGoing(value, id){
-	console.log("**********" + getUpdateGoing);
+	console.log("**********");
 	
 	var query = new Parse.Query(CommentObject);
 	console.log(query);
-	
+	console.log(id);
 	query.get(id, {
 	success: function(object) {
 	// object is an instance of Parse.Object.
