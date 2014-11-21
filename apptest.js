@@ -46,10 +46,10 @@ function noFocus() {
 	
 $('input, textarea')
 .on('focus', function (e) {
-    $('.bottom-bar').css('position', 'absolute');
+    $('.header').css('position', 'absolute');
 })
 .on('blur', function (e) {
-    $('.bottom-bar').css('position', 'fixed');
+    $('.header').css('position', 'fixed');
     //force page redraw to fix incorrectly positioned fixed elements
     setTimeout( function() {
         window.scrollTo( $.mobile.window.scrollLeft(), $.mobile.window.scrollTop() );
@@ -230,8 +230,9 @@ function updateGoing(value, id){
 	var point = new Point();
 	point.id =  id;
 	
+	var newVal = currentGoing=currentGoing + value;
 	// Set a new value on quantity
-	point.set("currentGoing", currentGoing=currentGoing + value);
+	point.set("currentGoing", newVal);
 	
 	// Save
 	point.save(null, {
