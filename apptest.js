@@ -16,8 +16,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 	console.log("onDeviceReady()");
 	navigator.geolocation.getCurrentPosition(getPoint, onError);
-	fixBar()
-;		
+	fixBar();		
 	};
 
 
@@ -37,32 +36,21 @@ function onError(error) {
                 'message: ' + error.message + '\n');
     }
 
-$( ".box" ).hide();
-$( "#hide" ).click(function( event ) {
-  event.preventDefault();
-  $( this ).hide();
-});
+
 
 //trying to make nav not popup
 function fixBar() {
 	/* we need this only on touch devices */
-if (Modernizr.touch) {
-    /* cache dom references */ 
-    var $body = jQuery('body'); 
+$('input').focus( function() {
+    $('.bottom-bar').hide();
+});
 
-    /* bind events */
-    $(document)
-    .on('focus', 'input', function(e) {
-        $body.addClass('fixfixed');
-    })
-    .on('blur', 'input', function(e) {
-        $body.removeClass('fixfixed');
-    });
-} 
+$('input').blur( function() {
+    $('.bottom-bar').show();
+});
 
 }
 
-document.write( '<style>#footer{visibility:hidden}@media(min-height:' + ($( window ).height() - 10) + 'px){#footer{visibility:visible}}</style>' );
 
 $(document).ready(function() {
         
@@ -170,7 +158,7 @@ function getList(CommentObject){
             htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-10 columns">' + '<ul>' + '</br>' + results[index].attributes.name + '</br>' + results[index].attributes.venue + " : " + results[index].attributes.town + ", "
 	    + results[index].attributes.state +  '</br>' + results[index].attributes.day + " | " + results[index].attributes.time + '</br>'
             + results[index].attributes.cost + '</ul>' + '</div>' + '<div class="small-1 columns">'+ '<div id="place-x">' + '</div>'+'<input id="' + results[index].id + '" class="text-swap" value="Not Going" type="button" />' + '</br>' +
-	    '<div class="friend-box">' + '<i class="fi-torso"></i> ' + '<span class="counter">' + currentGoing +'</span>' + '' + '</div>' + '</div>' +'</div>' + '</div>' + '<button id="hide">X</button>';
+	    '<div class="friend-box">' + '<i class="fi-torso"></i> ' + '<span class="counter">' + currentGoing +'</span>' + '' + '</div>' + '</div>' +'</div>' + '</div>';
 });
             $("#event").html(htmlBuilder);
 	    buttonClick();
@@ -279,7 +267,4 @@ function updateUpdateGoing(currentGoing, id, value){
 
 }
 
-//update function in parse - which item they clicked on (query.find one result by objectId), do a save only changing that one field
-	//then after that, write to html
-//event listener, take id of focus, $ has a css property - change it to top 0
-//
+
