@@ -155,9 +155,12 @@ function getList(CommentObject){
 	    if (currentGoing == undefined) {
 		currentGoing = 0;
 	    }
+	    if (results[index].attributes.day == undefined) {
+		results[index].attributes.day == " ";
+	    }
             htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-10 columns">' + '<ul>' + '</br>' + results[index].attributes.name + '</br>' + results[index].attributes.venue + " : " + results[index].attributes.town + ", "
 	    + results[index].attributes.state +  '</br>' + results[index].attributes.day + " | " + results[index].attributes.time + '</br>'
-            + results[index].attributes.cost + '</ul>' + '</div>' + '<div class="small-1 columns">'+ '<div id="place-x">' + '</div>'+'<input id="' + results[index].id + '" class="text-swap" value="Not Going" type="button" />' + '</br>' +
+            + results[index].attributes.cost + '</ul>' + '</div>' + '<div class="small-1 columns">'+ '<div id="place-x">' + '</div>'+ '</br>' +'<input id="' + results[index].id + '" class="text-swap" value="Add me" type="button" />' + '</br>' +
 	    '<div class="friend-box">' + '<i class="fi-torso"></i> ' + '<span class="counter">' + currentGoing +'</span>' + '' + '</div>' + '</div>' +'</div>' + '</div>';
 });
             $("#event").html(htmlBuilder);
@@ -183,16 +186,16 @@ $(".text-swap").on( "click", function() {
 	console.log("clicked");
 	var button = $(this);
 	//console.log(button.attr('value'));
-  if (button.attr('value') == "Not Going") {
+  if (button.attr('value') == "Add me") {
 	button.attr('value', 'Going');
 	//add plus 1
 	var clickedObjectId = this.id;
-	console.log("inside if not going");
+	
 	
 	getUpdateGoing(1, clickedObjectId);
   } else {
 	console.log("inside going");
-	button.attr('value', 'Not Going');
+	button.attr('value', 'Add me');
 	var clickedObjectId = this.id;
 	//subtract 1
 	getUpdateGoing(-1, clickedObjectId);
