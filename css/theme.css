@@ -3,14 +3,17 @@
 }
 /**** menu ****/
 .icon-bar > *:hover{
-    background:#62ccf9;
+    background:#3CB5D9;
+}
+.icon-bar > *:active{
+    background:#3CB5D9;
 }
 .icon-bar {
-    background:#62ccf9;
+  background:#3CB5D9;
 }
 .head-of-page {
-    padding:20px;
-    background-color:#999999;
+    padding:10px;
+    background-color:#3CB5D9;
     text-align:center;
 }
 .bottom-bar{
@@ -22,6 +25,7 @@
     height:85px;
   
 }
+
 
 body{
     background-color:white;
@@ -37,8 +41,10 @@ body{
 }
 ul {
     margin-left:0rem;
-    font-size:13pt;
-    color: #777777;
+    font-size:12pt;
+    color: black;
+    font-family: 'Droid Sans';
+
 }
 
 #place-x {
@@ -65,14 +71,14 @@ a {
 }
 .fi-torso {
     font-size:16pt;
-    color:white;
-    font-family: "Archivo Narrow";
+    color:black;
+    font-family: 'Droid Sans';
     font-style: normal;
     margin-bottom:2px;
     padding-left:4px;
 }
 .friend-box{
-    border-width:2px;
+    border-width:1px;
     border-style:solid;
     padding-bottom:15px;
     text-align:left;
@@ -80,8 +86,8 @@ a {
     width:62px;
     border-radius:50%;
     line-height:60px;
-    background-color:#62ccf9;;
-    border-color: #777777;
+    background-color:white;
+    border-color:black;
 }
 .scroll {
     padding-bottom:200px;
@@ -172,7 +178,7 @@ td {
 }
 /******add page*****/
 input {
-    font-family:"Archivo Narrow" !important;
+    font-family:'Droid Sans' !important;
     color:white !important;
     border:none !important;
     font-size:10pt !important;
@@ -239,8 +245,9 @@ button:active {
     position: absolute; 
 } 
 .counter {
-    font-size:18pt;
-    color:white;
+    font-size:16pt;
+    color:black;
+    font-family: 'Droid Sans';
 }
 button, .button {
     background-color:white;
